@@ -12,6 +12,7 @@ RUN pip install -r requirements.txt
 COPY app.py app.py
 COPY templates templates   
 
+
 # Expose the port that the Flask app will run on
 EXPOSE 5000
 
