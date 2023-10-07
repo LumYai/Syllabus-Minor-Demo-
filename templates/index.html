@@ -143,6 +143,9 @@
                             
                             <input type="email" class="form-control d-inline" id="input_credit_b_01" aria-describedby="emailHelp" 
                             placeholder="ใส่รหัสวิชา 6 หลัก">
+                            <div id="alert_course_put_b_01" class="alert alert-success" role="alert" style="display: none;">
+                                คุณได้ลงทะเบียน _____ เรียบร้อยแล้ว
+                            </div>
                             <select id="courseSelect" style="display: none;">
                                 <!-- รายการวิชาจะถูกเพิ่มที่นี่ -->
                             </select>
@@ -730,6 +733,12 @@
     
     // เมื่อ input ถูกคลิก
     inputElement.addEventListener('click', function() {
+
+
+
+
+
+
         // ลบรายการวิชาที่มีอยู่ใน select ทั้งหมด
         selectElement.innerHTML = '';
 
@@ -769,6 +778,16 @@ var inputElement = document.getElementById('input_credit_b_01');
 
 inputElement.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
+        document.getElementById("alert_course_put_b_01").style.display = "block";
+
+        // หายไปหลังจากเวลาที่กำหนด (เช่น 5 วินาที)
+        setTimeout(function() {
+            document.getElementById("alert_course_put_b_01").style.display = "none";
+        }, 5000); // 5000 มิลลิวินาที (5 วินาที)
+
+
+
+
         var courseCode = inputElement.value;
 
         // สร้างข้อมูลที่จะส่งไปยัง API
