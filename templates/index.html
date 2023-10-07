@@ -30,7 +30,7 @@
             <h1 >ข้อมูลวิชาโท</h1> 
         </div>
         <div class="d-flex justify-content-center">
-            <h2>คณะกรรมการบริหารหลักสูตร <ins>คณะวิทยาศาสตร์ สาขาคณิตศาสตร์</ins></h2>
+            <h2>คณะกรรมการบริหารหลักสูตร <ins>คณะมนุษยศาสตร์ สาขาภาษาเวียดนาม</ins></h2>
 
         </div>
         <!-- select 2 columns -->
@@ -114,10 +114,15 @@
                     <label for="exampleInputEmail1" >
                         <h3>วิชาบังคับ</h3>
                     </label>
-                    <p>หน่วยกิตขั้นต่ำที่ต้องผ่าน คือ</p>
-                    <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
-                    <small id="emailHelp" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
+                    <br>
+                    <p class="d-inline">หน่วยกิตขั้นต่ำที่ต้องผ่าน คือ </var><span id="text_required_subject_credit_01">0</span> หน่วยกิต</p>
+                    <input type="email" class="form-control d-inline" id="input_required_subject_credit_01" aria-describedby="emailHelp" 
+                    placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
+                    <small id="" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
+                <div>
+                    วิชาบังคับที่เลือก มีวิชา: <span id="course_id_show"></span>
                     
+                </div>
                 </div>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-b-01">
@@ -136,8 +141,11 @@
                         </div>
                         <div class="modal-body">
                             
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา 6 หลัก">
-                            
+                            <input type="email" class="form-control d-inline" id="input_credit_b_01" aria-describedby="emailHelp" 
+                            placeholder="ใส่รหัสวิชา 6 หลัก">
+                            <select id="courseSelect" style="display: none;">
+                                <!-- รายการวิชาจะถูกเพิ่มที่นี่ -->
+                            </select>
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -164,9 +172,9 @@
                         </div>
                         <div class="modal-body">
                             <p>ชื่อกลุ่มวิชา</p>
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ชื่อกลุ่มวิชา">
                             <p>รหัสวิชา</p>
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา">
 
                         </div>
                         <div class="modal-footer">
@@ -183,6 +191,8 @@
                     <label for="exampleInputEmail1" >
                         <h3>วิชาเลือก</h3>
                     </label>
+                    <br>
+                    <p class="d-inline">หน่วยกิตขั้นต่ำที่ต้องผ่าน คือ </var><span>0</span> หน่วยกิต</p>
                     <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
                     <small id="emailHelp" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
                 </div>
@@ -259,9 +269,9 @@
                         </div>
                         <div class="modal-body">
                             <p>ชื่อกลุ่มวิชา</p>
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ชื่อกลุ่มวิชา">
                             <p>รหัสวิชา</p>
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา">
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -391,9 +401,9 @@
                         </div>
                         <div class="modal-body">
                             <p>ชื่อกลุ่มวิชา</p>
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ชื่อกลุ่มวิชา">
                             <p>รหัสวิชา</p>
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา">
 
                         </div>
                         <div class="modal-footer">
@@ -486,9 +496,9 @@
                         </div>
                         <div class="modal-body">
                             <p>ชื่อกลุ่มวิชา</p>
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ชื่อกลุ่มวิชา">
                             <p>รหัสวิชา</p>
-                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา">
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -518,10 +528,16 @@
 </body>
 <script>
     // ใช้ Fetch API เพื่อดึงข้อมูลจาก API
-    fetch('/api/data')
+    fetch('/api/course')
             .then(response => response.json())
             .then(data => {
-                const dataList = document.getElementById('data-list');
+                courses = data;
+                createDropdown();
+
+
+
+
+
                 data.forEach(item => {
                     console.log(item)
                 });
@@ -529,6 +545,51 @@
             .catch(error => {
                 console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
             });
+
+    fetch('/api/minor')
+            .then(response => response.json())
+            .then(data => {
+
+                var displayTextElement2_c_show = document.getElementById("course_id_show");
+                displayTextElement2_c_show.textContent = data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'] ;
+
+                var displayTextElement2_c_show_credit = document.getElementById("text_required_subject_credit_01");
+                displayTextElement2_c_show_credit.textContent = data[0]['minor_subject']['วิชาบังคับ']['หน่วยกิตขั้นต่ำ'] ;
+
+
+
+
+                console.log("Minor ==> ", data)
+                console.log("Minor ==> ", typeof(data))
+
+                // data.forEach(item => {
+                //     console.log("Minor ==> ", item)
+                // });
+            })
+            .catch(error => {
+                console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+            });
+
+
+    console.log('------mirno-------');
+    // fetch('/api/minor')
+    //         .then(response => response.json())
+    //         .then(data => {
+                
+        
+
+
+
+
+
+    //             data.forEach(item => {
+    //                 console.log(item)
+    //             });
+    //         })
+    //         .catch(error => {
+    //             console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+    //         });
+            
     // ---------------------SCRIPT----------------------------
     $(document).ready(function () {
         $('input[type=radio]').change(function () {
@@ -611,5 +672,127 @@
             inputElement.value = ""; // เคลียร์ค่า input
         }
     });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // อ้างถึง input element
+        var inputElement = document.getElementById('input_required_subject_credit_01');
+
+        // อ้างถึง span element
+        var spanElement = document.getElementById('text_required_subject_credit_01');
+
+        // เพิ่ม event listener สำหรับ keypress ใน input element
+        inputElement.addEventListener('keypress', function(e) {
+            
+            if (e.key === 'Enter') { // ตรวจสอบว่ากด Enter
+                e.preventDefault(); // ไม่ให้ Enter ทำงานตามปกติ
+
+                // เปลี่ยนค่าของ span เป็นค่าใน input
+                console.log(typeof(parseInt(inputElement.value)))
+                let number_c = parseInt(inputElement.value)
+                if (number_c >= 0 && number_c <= 15){
+                    console.log("1234")
+                    var courseCode_credit_01 = inputElement.value;
+
+                    // สร้างข้อมูลที่จะส่งไปยัง API
+                    var data_01_credit = {
+                        courseCredit: courseCode_credit_01
+                    };
+
+                    fetch('/api/saveCredit', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(data_01_credit)
+                        })
+                        .then(response => response.json())
+                        .then(result => {
+                            console.log(result.message); // แสดงข้อความสำหรับการแจ้งเตือนผู้ใช้
+                        })
+                        .catch(error => {
+                            console.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล:', error);
+                        });
+                    spanElement.textContent = number_c;
+                    
+                }
+                
+            }
+        });
+    });
+
+
+    function createDropdown() {
+    var inputElement = document.getElementById('input_credit_b_01');
+    var selectElement = document.createElement('courseSelect');
+    
+    // ใส่ select เป็นซ่อนเพื่อไม่ให้แสดงไว้ก่อน
+    selectElement.style.display = 'none';
+    
+    // เมื่อ input ถูกคลิก
+    inputElement.addEventListener('click', function() {
+        // ลบรายการวิชาที่มีอยู่ใน select ทั้งหมด
+        selectElement.innerHTML = '';
+
+        // ค้นหาวิชาที่ตรงกับข้อมูลที่ผู้ใช้ใส่
+        var inputText = inputElement.value.trim();
+        var matchingCourses = courses.filter(function(course) {
+            return course._id.includes(inputText);
+        });
+
+        // เพิ่มรายการวิชาลงใน select
+        matchingCourses.forEach(function(course) {
+            var optionElement = document.createElement('option');
+            optionElement.value = course._id;
+            optionElement.textContent =  course._id + " " + course.name_course;
+            selectElement.appendChild(optionElement);
+        });
+
+        // แสดง select เพื่อให้ผู้ใช้เลือก
+        selectElement.style.display = 'block';
+    });
+
+    // เมื่อรายการวิชาใน select ถูกเลือก
+    selectElement.addEventListener('change', function() {
+        // ตั้งค่าค่าใน input ให้เป็นรหัสวิชาที่เลือก
+        inputElement.value = selectElement.value;
+
+        // ซ่อน select อีกครั้ง
+        selectElement.style.display = 'none';
+    });
+
+    // เพิ่ม select ลงใน DOM
+    inputElement.parentNode.appendChild(selectElement);
+}
+
+
+var inputElement = document.getElementById('input_credit_b_01');
+
+inputElement.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+        var courseCode = inputElement.value;
+
+        // สร้างข้อมูลที่จะส่งไปยัง API
+        var data = {
+            courseCode: courseCode
+        };
+
+        fetch('/api/saveCourse', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            console.log(result.message); // แสดงข้อความสำหรับการแจ้งเตือนผู้ใช้
+        })
+        .catch(error => {
+            console.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล:', error);
+        });
+
+        inputElement.value = '';
+    }
+});
 </script>
 </html>
