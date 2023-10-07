@@ -21,7 +21,10 @@
         <span class="navbar-brand  h1 text-warning mb-0 mx-2">CMU</span>
         <button class="btn btn-outline-danger my-2 my-sm-0 mx-2" type="submit">ออกจากระบบ</button>
     </nav>
-    <div class="container "  >
+    <div class="container "  id="year_many_01">
+        <div class="d-flex pt-2">
+            <h5>ชื่อผู้ใช้งาน: Sarang Heyo</h5>
+        </div>
         <!-- heading -->
         <div class="d-flex justify-content-center">
             <h1 >ข้อมูลวิชาโท</h1> 
@@ -31,45 +34,478 @@
 
         </div>
         <!-- select 2 columns -->
-        <div class="row">
-            <div class="col-md-6 p-0 rounded border border-dark" >
-                <div class="d-flex justify-content-center">เลือกรูปแบบวิชา</div>
-                <div class="form-check ms-5">
-                    <input class="form-check-input border border-dark" type="radio" name="course_12" id="flexRadioDefault1" checked>
-                    <label class="form-check-label" for="flexRadioDefault1">
-                        มีวิชาเลือกเพียงอย่างเดียว
-                    </label>
-                </div>
-                <div class="form-check ms-5">
-                    <input class="form-check-input border border-dark" type="radio" name="course_12" id="flexRadioDefault2" >
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        มีทั้งวิชาเลือกและวิชาบังคับ
-                    </label>
-                </div>
-            </div>
-            <div class="col-md-6 p-0 rounded border border-dark" >
-                <div class="d-flex justify-content-center">ให้หลักสูตรใช้งานสำหรับนักศึกษาตั้งแต่ชั้นปี:</div>
+        
+        <div class="rounded border border-dark p-4">
 
-                <div class="form-check ms-5 ">
-                    <input class="form-check-input border border-dark" type="radio" name="year123" id="flexRadioDefault1" checked>
-                    <label class="form-check-label " for="flexRadioDefault1">
-                        ใช้งานสำหรับนักศึกษาทุกชั้นปี
-                    </label>
+            <div class="row">
+                <div class="col-md-6 p-0 rounded border border-dark" >
+                    <div class="d-flex justify-content-center">เลือกรูปแบบวิชา</div>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input border border-dark" type="radio" name="course_12" id="rc1_01" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            มีวิชาเลือกเพียงอย่างเดียว
+                        </label>
+                    </div>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input border border-dark" type="radio" name="course_12" id="rc1_02" >
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            มีทั้งวิชาเลือกและวิชาบังคับ
+                        </label>
+                    </div>
                 </div>
-                <div class="form-check ms-5">
-                    <input class="form-check-input border border-dark" type="radio" name="year123" id="flexRadioDefault2" >
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        ใช้งานสำหรับนักศึกษา ก่อนปี __
-                    </label>
+                <div class="col-md-6 p-0 rounded border border-dark" >
+                    <div class="d-flex justify-content-center">เลือกปีที่หลักสูตรใช้งาน</div>
+    
+                    <div class="form-check ms-5 ">
+                        <input class="form-check-input border border-dark" type="radio" name="year123" id="rcr_01" checked>
+                        <label class="form-check-label " for="flexRadioDefault1">
+                            ใช้งานสำหรับนักศึกษาทุกชั้นปี
+                        </label>
+                    </div>
+                    <small id="emailHelp" class="form-text text-muted d-inline ms-5">* หากเลือก ก่อนปี - หลังปี จะมีช่องด้านล่างเพื่อใส่ข้อมูลช่วงอื่น</small>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input border border-dark" type="radio" name="year123" id="rcr_02" >
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            ใช้งานสำหรับนักศึกษา ก่อนปี <p class="d-inline bg-secondary text-light " id="year_change_text_01">2564</p>
+                        </label>
+                    </div>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input border border-dark" type="radio" name="year123" id="rcr_03" >
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            ใช้งานสำหรับนักศึกษา หลังปี <p class="d-inline bg-secondary text-light " id="year_change_text_02">2564</p>
+                        </label>
+                    
+                    </div>
+                    <div class="form-check ms-5">
+                        <!-- Button trigger modal -->
+                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#year-t-01" id="year_change_01">
+                    เปลี่ยนปีที่หลักสูตรใช้งาน
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="year-t-01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนปีที่หลักสูตรใช้งาน</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="email" class="form-control d-inline" id="input_year_change_text_01" 
+                                aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="click_year_change_text_01">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-check ms-5">
-                    <input class="form-check-input border border-dark" type="radio" name="year123" id="flexRadioDefault2" >
-                    <label class="form-check-label" for="flexRadioDefault2">
-                        ใช้งานสำหรับนักศึกษา หลังปี __
-                    </label>
+                    
+                    </div>
+                    
                 </div>
             </div>
+            <!-- ---------------------วิชาบังคับ------------------------ -->
+            <div class="" id="c1_01">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" >
+                        <h3>วิชาบังคับ</h3>
+                    </label>
+                    <p>หน่วยกิตขั้นต่ำที่ต้องผ่าน คือ</p>
+                    <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
+                    <small id="emailHelp" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
+                    
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-b-01">
+                    + เพิ่มวิชา
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-b-01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาบังคับ [+ เพิ่มวิชา]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา 6 หลัก">
+                            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-g-01">
+                    + ตามกลุ่ม
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-g-01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาบังคับ [+ ตามกลุ่ม]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>ชื่อกลุ่มวิชา</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <p>รหัสวิชา</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ---------------------วิชาเลือก------------------------ -->
+            <div class="" id="c1_02">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" >
+                        <h3>วิชาเลือก</h3>
+                    </label>
+                    <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
+                    <small id="emailHelp" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
+                </div>
+                <!-- Button trigger modal -->
+                
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-constrain-01">
+                    + เงื่อนไข
+                </button>
+                <small  class="form-text text-muted d-inline">* เช่น หากมีเงื่อนที่นักศึกษาต้องผ่านวิชา 300 ไม่น้อยกว่า 6 หน่วยกิต</small>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-constrain-01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาเลือก [+ เงื่อนไข]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>รหัสวิชา 3 ตัวท้าย</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขรหัสวิชา 3 ตัวท้าย">
+                            <p>หน่วยกิต</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขหน่วยกิต">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <br><br>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-b-02">
+                    + เพิ่มวิชา
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-b-02" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาเลือก [+ เพิ่มวิชา]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา 6 หลัก">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-g-02">
+                    + ตามกลุ่ม
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-g-02" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาเลือก [+ ตามกลุ่ม]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>ชื่อกลุ่มวิชา</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <p>รหัสวิชา</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#c-b-01">
+                + เพิ่มแขนง
+            </button>
         </div>
+        <br>
+        <!-- --------------------ก่อนปี - หลังปี--------------------- -->
+        
+        <div class="rounded border border-dark p-4" id="year_many_02">
+
+            <div class="row">
+                <div class="col-md-6 p-0 rounded border border-dark" >
+                    <div class="d-flex justify-content-center">เลือกรูปแบบวิชา</div>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input border border-dark" type="radio" name="course2_12" id="rc2_01" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            มีวิชาเลือกเพียงอย่างเดียว
+                        </label>
+                    </div>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input border border-dark" type="radio" name="course2_12" id="rc2_02" >
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            มีทั้งวิชาเลือกและวิชาบังคับ
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 rounded border border-dark" >
+
+    
+                    <div class="form-check ms-5 ">
+                        <label class="form-check-label " for="flexRadioDefault1" >
+                            หลักสูตรนี้ใช้งานสำหรับนักศึกษา <p class="d-inline bg-secondary text-light " id="year_text_down_01">2564</p>
+                        </label>
+                    </div>
+                    
+                <div class="form-check ms-5 my">
+                       
+
+                
+                <!-- Modal -->
+                <div class="modal fade" id="year-t-01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">เปลี่ยนปีที่หลักสูตรใช้งาน</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="email" class="form-control d-inline" id="input_year_change_text_01" 
+                                aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="click_year_change_text_01">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                    </div>
+                    
+                </div>
+            </div>
+            <!-- ---------------------วิชาบังคับ------------------------ -->
+            <div class="" id="c2_01">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" >
+                        <h3>วิชาบังคับ</h3>
+                    </label>
+                    <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
+                    <small id="emailHelp" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-b-01">
+                    + เพิ่มวิชา
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-b-01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาบังคับ [+ เพิ่มวิชา]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา 6 หลัก">
+                            
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-g-01">
+                    + ตามกลุ่ม
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-g-01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาบังคับ [+ ตามกลุ่ม]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>ชื่อกลุ่มวิชา</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <p>รหัสวิชา</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ---------------------วิชาเลือก------------------------ -->
+            <div class="" id="c2_02">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" >
+                        <h3>วิชาเลือก</h3>
+                    </label>
+                    <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
+                    <small id="emailHelp" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
+                </div>
+                <!-- Button trigger modal -->
+                
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-constrain-01">
+                    + เงื่อนไข
+                </button>
+                <small  class="form-text text-muted d-inline">* เช่น หากมีเงื่อนที่นักศึกษาต้องผ่านวิชา 300 ไม่น้อยกว่า 6 หน่วยกิต</small>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-constrain-01" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาเลือก [+ เงื่อนไข]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>รหัสวิชา 3 ตัวท้าย</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขรหัสวิชา 3 ตัวท้าย">
+                            <p>หน่วยกิต</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ตัวเลขหน่วยกิต">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <br><br>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-b-02">
+                    + เพิ่มวิชา
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-b-02" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาเลือก [+ เพิ่มวิชา]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่รหัสวิชา 6 หลัก">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#c-g-02">
+                    + ตามกลุ่ม
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="c-g-02" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">วิชาเลือก [+ ตามกลุ่ม]</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>ชื่อกลุ่มวิชา</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                            <p>รหัสวิชา</p>
+                            <input type="email" class="form-control d-inline" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ใส่ปีของหลักสูตร">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            
+
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#c-b-01">
+                + เพิ่มแขนง
+            </button>
+        </div>
+        <br>
+        
         
     </div>
 
@@ -93,7 +529,87 @@
             .catch(error => {
                 console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
             });
+    // ---------------------SCRIPT----------------------------
+    $(document).ready(function () {
+        $('input[type=radio]').change(function () {
+            if ($('#rc1_01').is(':checked')) {
+                $('#c1_01').show();
+                $('#c1_02').hide();
+            } else {
+                $('#c1_01').show();
+                $('#c1_02').show();
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('input[type=radio]').change(function () {
+            if ($('#rc2_01').is(':checked')) {
+                $('#c2_01').show();
+                $('#c2_02').hide();
+            } else {
+                $('#c2_01').show();
+                $('#c2_02').show();
+            }
+        });
+    });
 
 
+    $(document).ready(function () {
+        $('input[type=radio]').change(function () {
+            if ($('#rcr_01').is(':checked')) {
+                $('#year_change_01').prop('disabled', true);
+            } else {
+                $('#year_change_01').prop('disabled', false);
+                
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $('input[type=radio]').change(function () {
+            var text_year_all = ''
+            var year_text_down_back = document.getElementById("year_change_text_01").textContent;
+            var year_text_down_01 = document.getElementById("year_text_down_01");
+            
+            if ($('#rcr_01').is(':checked')) {
+                
+                $('#year_many_01').show();
+                $('#year_many_02').hide();
+            } else if ($('#rcr_02').is(':checked')) {
+                text_year_all += "หลังปี "
+                text_year_all += year_text_down_back;
+                year_text_down_01.textContent = text_year_all;
+                $('#year_many_01').show();
+                $('#year_many_02').show();
+            }else{
+                text_year_all += "ก่อนปี "
+                text_year_all += year_text_down_back;
+                year_text_down_01.textContent = text_year_all;
+                $('#year_many_01').show();
+                $('#year_many_02').show();
+            }
+        });
+    });
+
+
+
+    // รับ reference ของ element input, button, และ element ข้อความ
+    var inputElement = document.getElementById("input_year_change_text_01");
+    var appendButton = document.getElementById("click_year_change_text_01");
+    var displayTextElement1 = document.getElementById("year_change_text_01");
+    var displayTextElement2 = document.getElementById("year_change_text_02");
+
+    // เพิ่ม event listener เมื่อปุ่มถูกคลิก
+    appendButton.addEventListener("click", function() {
+        var inputValue = inputElement.value; // รับค่าที่ผู้ใช้ป้อน
+        if (inputValue !== "") {
+            // ตรวจสอบว่าค่าที่รับมาไม่ว่าง
+            // และเพิ่มค่านั้นไปยัง element ข้อความ
+            displayTextElement1.textContent = inputValue ;
+            displayTextElement2.textContent = inputValue ;
+            inputElement.value = ""; // เคลียร์ค่า input
+        }
+    });
 </script>
 </html>
