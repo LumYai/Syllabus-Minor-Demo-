@@ -43,10 +43,15 @@
                     <div class="form-check ms-5">
                         <input class="form-check-input border border-dark" type="radio" name="course_12" id="rc1_01" checked>
                         <label class="form-check-label" for="flexRadioDefault1">
+                            มีวิชาบังคับเพียงอย่างเดียว
+                        </label>
+                    </div>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input border border-dark" type="radio" name="course_12" id="rc1_03" >
+                        <label class="form-check-label" for="flexRadioDefault2">
                             มีวิชาเลือกเพียงอย่างเดียว
                         </label>
                     </div>
-                    
                     <div class="form-check ms-5">
                         <input class="form-check-input border border-dark" type="radio" name="course_12" id="rc1_02" >
                         <label class="form-check-label" for="flexRadioDefault2">
@@ -308,6 +313,12 @@
                     <div class="form-check ms-5">
                         <input class="form-check-input border border-dark" type="radio" name="course2_12" id="rc2_01" checked>
                         <label class="form-check-label" for="flexRadioDefault1">
+                            มีวิชาบังคับเพียงอย่างเดียว
+                        </label>
+                    </div>
+                    <div class="form-check ms-5">
+                        <input class="form-check-input border border-dark" type="radio" name="course2_12" id="rc2_03" >
+                        <label class="form-check-label" for="flexRadioDefault2">
                             มีวิชาเลือกเพียงอย่างเดียว
                         </label>
                     </div>
@@ -550,13 +561,28 @@
             .catch(error => {
                 console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
             });
-    
-        fetch('/api/minor')
+        function reload_course_active(){
+            fetch('/api/minor')
                 .then(response => response.json())
                 .then(data => {
-
+                    
                     var displayTextElement2_c_show = document.getElementById("course_id_show");
-                    displayTextElement2_c_show.textContent = data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'] ;
+                    // displayTextElement2_c_show.textContent = data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'] ;
+
+                    // เลือกตัวแปร div ที่คุณต้องการแสดงรายการ
+                    // var listContainer = document.getElementById("course_id_show");
+
+                    // ลูปรายการและสร้าง <div> แต่ละรายการพร้อมกับการกำหนดคลาส
+                    console.log('dddddd ', data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'])
+                    data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'].forEach(function(item) {
+                        var itemDiv = document.createElement("div"); // สร้าง <div> สำหรับแต่ละรายการ
+                        itemDiv.textContent = item; // กำหนดข้อมูลของรายการใน <div>
+                        itemDiv.classList.add("border", "border-primary", "d-inline", "p-1"); // เพิ่มคลาสใน <div>
+                        displayTextElement2_c_show.appendChild(itemDiv); // เพิ่ม <div> ลงในคอนเทนเนอร์
+                    });
+
+
+                    
 
                     var displayTextElement2_c_show_credit = document.getElementById("text_required_subject_credit_01");
                     displayTextElement2_c_show_credit.textContent = data[0]['minor_subject']['วิชาบังคับ']['หน่วยกิตขั้นต่ำ'] ;
@@ -570,10 +596,16 @@
                     // data.forEach(item => {
                     //     console.log("Minor ==> ", item)
                     // });
+                    // location.reload();
                 })
                 .catch(error => {
                     console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
                 });
+
+        }
+        
+        reload_course_active()
+        
     
 //     function refreshText() {
 //         var displayTextElement2_c_show = document.getElementById("course_id_show");
@@ -603,9 +635,14 @@
     $(document).ready(function () {
         $('input[type=radio]').change(function () {
             if ($('#rc1_01').is(':checked')) {
+                $('#c1_01').show();
+                $('#c1_02').hide();
+            } else if($('#rc1_03').is(':checked')) {
                 $('#c1_01').hide();
                 $('#c1_02').show();
-            } else {
+            }
+
+            else {
                 $('#c1_01').show();
                 $('#c1_02').show();
             }
@@ -615,6 +652,9 @@
     $(document).ready(function () {
         $('input[type=radio]').change(function () {
             if ($('#rc2_01').is(':checked')) {
+                $('#c2_01').show();
+                $('#c2_02').hide();
+            }else if($('#rc2_03').is(':checked')) {
                 $('#c2_01').hide();
                 $('#c2_02').show();
             } else {
@@ -795,7 +835,9 @@ inputElement.addEventListener('keyup', function(event) {
                     let have_course = data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'];
                     console.log('datadata ==>', have_course);
                     console.log(inputElement.value, typeof(inputElement.value))
-                    if (have_course.includes(inputElement.value)){
+                    if (have_course == undefined){
+                        check_if_in = false
+                    }else if(have_course.includes(inputElement.value)){
                         
                         check_if_in = true
                         console.log('check_if_in ==>', check_if_in)
@@ -868,7 +910,14 @@ inputElement.addEventListener('keyup', function(event) {
 
                                             inputElement.value = '';
                         
-                                    
+                                            //-----------------------------------------
+                                            var displayTextElement2_c_show = document.getElementById("course_id_show");
+                                            displayTextElement2_c_show.textContent = "";
+                                            reload_course_active()
+
+
+
+
                                     console.log('check_if_in ==> มีวิชาอยู่ใน course ใส่ได้ เอาวิชาใส่')
                                 }
                                 // if(){
