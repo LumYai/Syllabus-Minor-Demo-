@@ -46,6 +46,7 @@
                             มีวิชาเลือกเพียงอย่างเดียว
                         </label>
                     </div>
+                    
                     <div class="form-check ms-5">
                         <input class="form-check-input border border-dark" type="radio" name="course_12" id="rc1_02" >
                         <label class="form-check-label" for="flexRadioDefault2">
@@ -62,20 +63,20 @@
                             ใช้งานสำหรับนักศึกษาทุกชั้นปี
                         </label>
                     </div>
-                    <small id="emailHelp" class="form-text text-muted d-inline ms-5">* หากเลือก ก่อนปี - หลังปี จะมีช่องด้านล่างเพื่อใส่ข้อมูลช่วงอื่น</small>
+                    <small id="emailHelp" class="form-text text-muted d-inline ms-5">* หากเลือก ตั้งแต่ปี จะมีช่องด้านล่างเพื่อใส่ข้อมูลช่วงอื่น</small>
                     <div class="form-check ms-5">
                         <input class="form-check-input border border-dark" type="radio" name="year123" id="rcr_02" >
                         <label class="form-check-label" for="flexRadioDefault2">
-                            ใช้งานสำหรับนักศึกษา ก่อนปี <p class="d-inline bg-secondary text-light " id="year_change_text_01">2564</p>
+                            ใช้งานสำหรับนักศึกษา ตั้งแต่ปี <p class="d-inline bg-secondary text-light " id="year_change_text_01">2564</p>
                         </label>
                     </div>
-                    <div class="form-check ms-5">
+                    <!-- <div class="form-check ms-5">
                         <input class="form-check-input border border-dark" type="radio" name="year123" id="rcr_03" >
                         <label class="form-check-label" for="flexRadioDefault2">
                             ใช้งานสำหรับนักศึกษา หลังปี <p class="d-inline bg-secondary text-light " id="year_change_text_02">2564</p>
                         </label>
                     
-                    </div>
+                    </div> -->
                     <div class="form-check ms-5">
                         <!-- Button trigger modal -->
                 <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#year-t-01" id="year_change_01">
@@ -115,7 +116,7 @@
                         <h3>วิชาบังคับ</h3>
                     </label>
                     <br>
-                    <p class="d-inline">หน่วยกิตขั้นต่ำที่ต้องผ่าน คือ </var><span id="text_required_subject_credit_01">0</span> หน่วยกิต</p>
+                    <p class="d-inline">หน่วยกิตขั้นต่ำที่ต้องผ่าน คือ </var><span id="text_required_subject_credit_01" >0</span> หน่วยกิต</p>
                     <input type="email" class="form-control d-inline" id="input_required_subject_credit_01" aria-describedby="emailHelp" 
                     placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
                     <small id="" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
@@ -144,7 +145,13 @@
                             <input type="email" class="form-control d-inline" id="input_credit_b_01" aria-describedby="emailHelp" 
                             placeholder="ใส่รหัสวิชา 6 หลัก">
                             <div id="alert_course_put_b_01" class="alert alert-success" role="alert" style="display: none;">
-                                คุณได้ลงทะเบียน _____ เรียบร้อยแล้ว
+                                คุณได้ลงทะเบียนวิชา _____ เรียบร้อยแล้ว
+                            </div>
+                            <div id="alert_course_put_b_01_not" class="alert alert-danger" role="alert" style="display: none;">
+                                คุณได้ทำการลงทะเบียนวิชา _____ นี้แล้ว 
+                            </div>
+                            <div id="alert_course_put_b_02_not" class="alert alert-warning" role="alert" style="display: none;">
+                                ไม่มีวิชานี้อยู่ในระบบ
                             </div>
                             <select id="courseSelect" style="display: none;">
                                 <!-- รายการวิชาจะถูกเพิ่มที่นี่ -->
@@ -536,11 +543,6 @@
             .then(data => {
                 courses = data;
                 createDropdown();
-
-
-
-
-
                 data.forEach(item => {
                     console.log(item)
                 });
@@ -548,31 +550,35 @@
             .catch(error => {
                 console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
             });
+    
+        fetch('/api/minor')
+                .then(response => response.json())
+                .then(data => {
 
-    fetch('/api/minor')
-            .then(response => response.json())
-            .then(data => {
+                    var displayTextElement2_c_show = document.getElementById("course_id_show");
+                    displayTextElement2_c_show.textContent = data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'] ;
 
-                var displayTextElement2_c_show = document.getElementById("course_id_show");
-                displayTextElement2_c_show.textContent = data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'] ;
-
-                var displayTextElement2_c_show_credit = document.getElementById("text_required_subject_credit_01");
-                displayTextElement2_c_show_credit.textContent = data[0]['minor_subject']['วิชาบังคับ']['หน่วยกิตขั้นต่ำ'] ;
-
-
+                    var displayTextElement2_c_show_credit = document.getElementById("text_required_subject_credit_01");
+                    displayTextElement2_c_show_credit.textContent = data[0]['minor_subject']['วิชาบังคับ']['หน่วยกิตขั้นต่ำ'] ;
 
 
-                console.log("Minor ==> ", data)
-                console.log("Minor ==> ", typeof(data))
 
-                // data.forEach(item => {
-                //     console.log("Minor ==> ", item)
-                // });
-            })
-            .catch(error => {
-                console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
-            });
+                    
+                    console.log("Minor ==> ", data)
+                    console.log("Minor ==> ", typeof(data))
 
+                    // data.forEach(item => {
+                    //     console.log("Minor ==> ", item)
+                    // });
+                })
+                .catch(error => {
+                    console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+                });
+    
+//     function refreshText() {
+//         var displayTextElement2_c_show = document.getElementById("course_id_show");
+//         displayTextElement2_c_show.textContent = data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'];
+// }
 
     console.log('------mirno-------');
     // fetch('/api/minor')
@@ -597,8 +603,8 @@
     $(document).ready(function () {
         $('input[type=radio]').change(function () {
             if ($('#rc1_01').is(':checked')) {
-                $('#c1_01').show();
-                $('#c1_02').hide();
+                $('#c1_01').hide();
+                $('#c1_02').show();
             } else {
                 $('#c1_01').show();
                 $('#c1_02').show();
@@ -609,8 +615,8 @@
     $(document).ready(function () {
         $('input[type=radio]').change(function () {
             if ($('#rc2_01').is(':checked')) {
-                $('#c2_01').show();
-                $('#c2_02').hide();
+                $('#c2_01').hide();
+                $('#c2_02').show();
             } else {
                 $('#c2_01').show();
                 $('#c2_02').show();
@@ -641,7 +647,7 @@
                 $('#year_many_01').show();
                 $('#year_many_02').hide();
             } else if ($('#rcr_02').is(':checked')) {
-                text_year_all += "หลังปี "
+                text_year_all += "ก่อนปี "
                 text_year_all += year_text_down_back;
                 year_text_down_01.textContent = text_year_all;
                 $('#year_many_01').show();
@@ -732,7 +738,7 @@
     selectElement.style.display = 'none';
     
     // เมื่อ input ถูกคลิก
-    inputElement.addEventListener('click', function() {
+    inputElement.addEventListener('input', function() {
 
 
 
@@ -776,41 +782,135 @@
 
 var inputElement = document.getElementById('input_credit_b_01');
 
+
+
 inputElement.addEventListener('keyup', function(event) {
     if (event.key === 'Enter') {
-        document.getElementById("alert_course_put_b_01").style.display = "block";
+        // if (inputElement.value )
+        let check_if_in = false
+        fetch('/api/minor')
+                .then(response => response.json())
+                .then(data => {
+                    
+                    let have_course = data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'];
+                    console.log('datadata ==>', have_course);
+                    console.log(inputElement.value, typeof(inputElement.value))
+                    if (have_course.includes(inputElement.value)){
+                        
+                        check_if_in = true
+                        console.log('check_if_in ==>', check_if_in)
+                    }
+                    
+                    
 
-        // หายไปหลังจากเวลาที่กำหนด (เช่น 5 วินาที)
-        setTimeout(function() {
-            document.getElementById("alert_course_put_b_01").style.display = "none";
-        }, 5000); // 5000 มิลลิวินาที (5 วินาที)
+
+                    if (check_if_in){
+                        
+
+
+
+                        console.log('have มีขึ้นแดง')
+                        document.getElementById("alert_course_put_b_01_not").style.display = "block";
+                        
+                        // หายไปหลังจากเวลาที่กำหนด (เช่น 5 วินาที)
+                        setTimeout(function() {
+                            document.getElementById("alert_course_put_b_01_not").style.display = "none";
+                        }, 5000); // 5000 มิลลิวินาที (5 วินาที)
+                    }
+                    else{
+                        fetch('/api/course')
+                            .then(response => response.json())
+                            .then(data => {
+
+                                let list_course_id = [] 
+                                console.log('data sdsdsd ==> ', data)
+                                data.forEach(item => {
+                                    console.log(item.id)
+                                    list_course_id.push(item._id);
+                                    
+                                });
+                                console.log('list_course_id ==>', list_course_id)
+
+                                if (list_course_id.includes(inputElement.value)){
+                                    
+                                            console.log('ไม่have ขึ้นเขียวลงได้')
+                                            document.getElementById("alert_course_put_b_01").style.display = "block";
+                                            
+                                            // หายไปหลังจากเวลาที่กำหนด (เช่น 5 วินาที)
+                                            setTimeout(function() {
+                                                document.getElementById("alert_course_put_b_01").style.display = "none";
+                                            }, 5000); // 5000 มิลลิวินาที (5 วินาที)
 
 
 
 
-        var courseCode = inputElement.value;
+                                            var courseCode = inputElement.value;
 
-        // สร้างข้อมูลที่จะส่งไปยัง API
-        var data = {
-            courseCode: courseCode
-        };
+                                            // สร้างข้อมูลที่จะส่งไปยัง API
+                                            var data = {
+                                                courseCode: courseCode
+                                            };
 
-        fetch('/api/saveCourse', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.json())
-        .then(result => {
-            console.log(result.message); // แสดงข้อความสำหรับการแจ้งเตือนผู้ใช้
-        })
-        .catch(error => {
-            console.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล:', error);
-        });
+                                            fetch('/api/saveCourse', {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json'
+                                                },
+                                                body: JSON.stringify(data)
+                                            })
+                                            .then(response => response.json())
+                                            .then(result => {
+                                                console.log(result.message); // แสดงข้อความสำหรับการแจ้งเตือนผู้ใช้
+                                            })
+                                            .catch(error => {
+                                                console.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล:', error);
+                                            });
 
-        inputElement.value = '';
+                                            inputElement.value = '';
+                        
+                                    
+                                    console.log('check_if_in ==> มีวิชาอยู่ใน course ใส่ได้ เอาวิชาใส่')
+                                }
+                                // if(){
+
+                                else{
+                                    // เตือนว่าไม่มีวิชาในนี้
+                                    document.getElementById("alert_course_put_b_02_not").style.display = "block";
+                        
+                                    // หายไปหลังจากเวลาที่กำหนด (เช่น 5 วินาที)
+                                    setTimeout(function() {
+                                        document.getElementById("alert_course_put_b_02_not").style.display = "none";
+                                    }, 5000); // 5000 มิลลิวินาที (5 วินาที)
+
+
+                                }
+                                
+
+
+
+
+
+                            })
+                            .catch(error => {
+                                console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+                        });
+                        
+
+
+
+                    }
+
+                    // data.forEach(item => {
+                    //     console.log("Minor ==> ", item)
+                    // });
+                })
+                .catch(error => {
+                    console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
+                });
+
+        
+
+        
     }
 });
 </script>
