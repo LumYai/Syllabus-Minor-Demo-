@@ -5,16 +5,16 @@ db.minor.insertMany([
 		"_id": "030",
 		"faculty_name": "Humanities",
 		"branch_name": "Vietnamese",
-		"year_active": ["all_year"],
-		"minor_subject": {"ปีที่หลักสูตรใช้งาน": ["ทุกชั้นปี"]}
+		"minor_subject": {
+			"year_active": ["all_year"],
+			"ปีที่หลักสูตรใช้งาน": ["ทุกชั้นปี"]}
 
 	},
 	{
 		"_id": "003",
 		"faculty_name": "Humanities",
 		"branch_name": "German",
-		"year_active": ["all_year"],
-		"minor_subject": {}
+		"minor_subject": {"year_active": ["all_year"],}
 
 	}
 ])
@@ -51,3 +51,11 @@ db.course.insertMany([
 
 	},
 ])
+
+
+
+
+
+
+
+
