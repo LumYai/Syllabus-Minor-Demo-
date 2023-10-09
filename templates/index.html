@@ -843,7 +843,7 @@
         matchingCourses.forEach(function(course) {
             var optionElement = document.createElement('option');
             optionElement.value = course._id;
-            optionElement.textContent =  course._id + " " + course.name_course;
+            optionElement.textContent =  course._id + " " + course.name_course + " " + "หน่วยกิต " + course.credit_course;
             selectElement.appendChild(optionElement);
         });
 
