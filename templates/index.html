@@ -124,6 +124,17 @@
                     <p class="d-inline">หน่วยกิตขั้นต่ำที่ต้องผ่าน คือ </var><span id="text_required_subject_credit_01" >0</span> หน่วยกิต</p>
                     <input type="email" class="form-control d-inline" id="input_required_subject_credit_01" aria-describedby="emailHelp" 
                     placeholder="ใส่ตัวเลขเปลี่ยนแปลงหน่วยกิตที่ต้องผ่าน">
+                    <br>
+                    <div id="alert_credit_put_b_01" class="alert alert-success" role="alert" style="display: none;">
+                        คุณได้ทำการเปลี่ยนหน่วยกิตเรียบร้อยแล้ว
+                    </div>
+                    <div id="alert_credit_put_b_02" class="alert alert-danger" role="alert" style="display: none;">
+                        กรุณาใส่ตัวเลขให้ถูกต้อง หรือ ใส่ตัวเลขในช่วง 0 - 15
+                    </div>
+
+
+
+
                     <small id="" class="form-text text-muted d-inline">* หน่วยกิตขั้นต่ำที่ต้องผ่านในวิชาบังคับ</small>
                 <div>
                     วิชาบังคับที่เลือก มีวิชา: <span id="course_id_show"></span>
@@ -575,11 +586,27 @@
                     // ลูปรายการและสร้าง <div> แต่ละรายการพร้อมกับการกำหนดคลาส
                     console.log('dddddd ', data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'])
                     data[0]['minor_subject']['วิชาบังคับ']['มีวิชา'].forEach(function(item) {
-                        var itemDiv = document.createElement("div"); // สร้าง <div> สำหรับแต่ละรายการ
-                        itemDiv.textContent = item; // กำหนดข้อมูลของรายการใน <div>
-                        itemDiv.classList.add("border", "border-primary", "d-inline", "p-1"); // เพิ่มคลาสใน <div>
-                        displayTextElement2_c_show.appendChild(itemDiv); // เพิ่ม <div> ลงในคอนเทนเนอร์
+                        var outerDiv = document.createElement("div"); // สร้าง <div> ชั้นนอกสำหรับแต่ละรายการ
+                        outerDiv.classList.add("border", "border-primary", "p-1", );
+
+                        var innerDiv = document.createElement("div",); // สร้าง <div> ชั้นใน
+                        innerDiv.classList.add("border-primary", "p-1", 'justify-content-end', 'd-flex', 'd-inline');
+                        outerDiv.textContent = item; // กำหนดข้อมูลใน <div> ชั้นใน
+                        
+
+                        var button = document.createElement("button"); // สร้าง <button>
+                        button.type = "button";
+                        button.classList.add("btn", "btn-danger"); // เพิ่มคลาสใน <button>
+                        button.textContent = "ลบวิชา"; // กำหนดข้อความในปุ่ม
+                        
+                        innerDiv.appendChild(button); // เพิ่ม <button> ลงใน <div> ชั้นใน
+                        outerDiv.appendChild(innerDiv); // เพิ่ม <div> ชั้นในลงใน <div> ชั้นนอก
+                        
+
+                        displayTextElement2_c_show.appendChild(outerDiv); // เพิ่ม <div> ชั้นนอกลงในคอนเทนเนอร์
                     });
+
+
 
 
                     
@@ -739,6 +766,15 @@
                 console.log(typeof(parseInt(inputElement.value)))
                 let number_c = parseInt(inputElement.value)
                 if (number_c >= 0 && number_c <= 15){
+                    // แสดง คุณลงทะเบียนได้ เยี่ยม
+                    document.getElementById("alert_credit_put_b_01").style.display = "block";
+                        
+                        // หายไปหลังจากเวลาที่กำหนด (เช่น 5 วินาที)
+                    setTimeout(function() {
+                        document.getElementById("alert_credit_put_b_01").style.display = "none";
+                    }, 5000); // 5000 มิลลิวินาที (5 วินาที)
+
+
                     console.log("1234")
                     var courseCode_credit_01 = inputElement.value;
 
@@ -763,6 +799,15 @@
                         });
                     spanElement.textContent = number_c;
                     
+                }else{
+                    document.getElementById("alert_credit_put_b_02").style.display = "block";
+                        
+                        // หายไปหลังจากเวลาที่กำหนด (เช่น 5 วินาที)
+                    setTimeout(function() {
+                        document.getElementById("alert_credit_put_b_02").style.display = "none";
+                    }, 5000); // 5000 มิลลิวินาที (5 วินาที)
+
+
                 }
                 
             }
